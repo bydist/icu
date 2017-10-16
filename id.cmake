@@ -3,8 +3,7 @@ set(package icu)
 byd__package__info(${package}
     MAINTAINER_NAME "David Callu"
     MAINTAINER_EMAIL "callu.david@gmail.com"
-    VERSION 58.2
-    PACKAGE_VERSION 0.1
+    VERSION 58.2-1
     ABI 58.2
     )
 
