@@ -14,6 +14,7 @@ include("${CMAKE_CURRENT_LIST_DIR}/determine_toolset.cmake")
 if(MSVC)
     byd__package__get_script_dir(${package} script_dir)
     byd__package__get_source_dir(${package} source_dir)
+    byd__package__get_install_dir(${package} install_dir)
     byd__private__get_num_core_available(num_jobs)
 
     set(ICU_SLN ${source_dir}/source/allinone/allinone.sln)
@@ -34,9 +35,10 @@ if(MSVC)
     byd__script__end()
     byd__build_system__default_build_command(${package})
 
+
     byd__script__begin("${script_dir}/install.cmake")
         byd__script__command("${CMAKE_COMMAND}"
-                             "-DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}"
+                             "-DCMAKE_INSTALL_PREFIX=${install_dir}"
                              "-DICU_SOURCE_DIR=${source_dir}"
                              -P "${script_dir}/${WINDOWS_INSTALL_SCRIPT}")
     byd__script__end()
