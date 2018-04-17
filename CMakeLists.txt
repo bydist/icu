@@ -30,16 +30,50 @@ if(MSVC)
     byd__script__end()
     byd__build_system__default_configure_command(${package})
 
-    
-    
+
+
     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
         set(ICU_PLATFORM x64)
     else()
         set(ICU_PLATFORM Win32)
     endif()
-    
+
+    set(project_to_build
+        cal
+        cintltst
+        common
+        ctestfw
+        date
+        derb
+        genbrk
+        genccode
+        gencfu
+        gencmn
+        gencnval
+        gendict
+        gennorm2
+        genrb
+        gensprep
+        gentest
+        i18n
+        icuinfo
+        icupkg
+        io
+        iotest
+        makeconv
+        makedata
+        pkgdata
+        stubdata
+        testplug
+        toolutil
+        uconv
+    )
+
+    foreach( project_ IN LISTS project_to_build)
+        list(APPEND projects_cli "/t:${project_}")
+    endforeach()
     byd__script__begin("${script_dir}/build.cmake")
-        byd__script__command("MSbuild" "/m:${num_jobs}" "/p:Configuration=${CMAKE_BUILD_TYPE}" "/p:Platform=${ICU_PLATFORM}" "/p:PlatformToolset=${ICU_TOOLSET}" "${ICU_SLN}")
+        byd__script__command("MSbuild" ${projects_cli} "/m:${num_jobs}" "/p:Configuration=${CMAKE_BUILD_TYPE}" "/p:Platform=${ICU_PLATFORM}" "/p:PlatformToolset=${ICU_TOOLSET}" "${ICU_SLN}")
     byd__script__end()
     byd__build_system__default_build_command(${package})
 
