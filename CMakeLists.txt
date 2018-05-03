@@ -106,6 +106,7 @@ else()
 
     byd__autotool__configure__add_args(${package} --enable-tests)
     byd__autotool__configure__add_args(${package} --disable-samples)
+    byd__autotool__configure__add_args(${package} --disable-layoutex)
     byd__autotool__configure__add_args(${package} --enable-rpath)
 
     byd__package__set_source_sub_dir(${package} "source")
