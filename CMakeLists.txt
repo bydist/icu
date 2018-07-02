@@ -73,7 +73,7 @@ if(MSVC)
         list(APPEND projects_cli "/t:${project_}")
     endforeach()
     byd__script__begin("${script_dir}/build.cmake")
-        byd__script__command("MSbuild" ${projects_cli} "/m:${num_jobs}" "/p:Configuration=${CMAKE_BUILD_TYPE}" "/p:Platform=${ICU_PLATFORM}" "/p:PlatformToolset=${ICU_TOOLSET}" "${ICU_SLN}")
+        byd__script__command("MSbuild" ${projects_cli} "/m:${num_jobs}" "/p:Configuration=${CMAKE_BUILD_TYPE}" "/p:Platform=${ICU_PLATFORM}" "/p:PlatformToolset=${ICU_TOOLSET}" "/p:WindowsTargetPlatformVersion=10.0.17134.0" "${ICU_SLN}")
     byd__script__end()
     byd__build_system__default_build_command(${package})
 
