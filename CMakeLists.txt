@@ -20,13 +20,8 @@ if(MSVC)
     set(ICU_SLN ${source_dir}/source/allinone/allinone.sln)
     set(WINDOWS_INSTALL_SCRIPT install_on_windows.cmake)
 
-#    byd__script__begin("${script_dir}/update.cmake")
-#    byd__script__end()
-#    byd__build_system__default_update_command(${package})
-
     byd__script__begin("${script_dir}/configure.cmake")
-        byd__script__command("devenv" "/Upgrade" "${ICU_SLN}")
-#        byd__script__command("${CMAKE_COMMAND}" -E echo "no configuration step")
+        byd__script__command("${CMAKE_COMMAND}" -E echo "no configuration step")
     byd__script__end()
     byd__build_system__default_configure_command(${package})
 
